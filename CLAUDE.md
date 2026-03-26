@@ -1,11 +1,11 @@
 ## Progress
-- ⬜ Step 1: Python project setup
-- ⬜ Step 2: Token bucket algorithm + tests
-- ⬜ Step 3: Fixed window algorithm + tests
-- ⬜ Step 4: Sliding window algorithm + tests
-- ⬜ Step 5: FastAPI app with in-memory backend + tests
-- ⬜ Step 6: Redis backend + tests
-- ⬜ Step 7: Docker + Docker Compose
+- ✅ Step 1: Python project setup
+- ✅ Step 2: Token bucket algorithm + tests
+- ✅ Step 3: Fixed window algorithm + tests
+- ✅ Step 4: Sliding window algorithm + tests
+- ✅ Step 5: FastAPI app with in-memory backend + tests
+- ✅ Step 6: Redis backend + tests
+- ✅ Step 7: Docker + Docker Compose
 - ⬜ Step 8: GitHub Actions CI/CD
 - ⬜ Step 9: AWS EC2 deployment
 - ⬜ Step 10: Locust load testing

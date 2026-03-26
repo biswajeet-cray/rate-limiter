@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py -3 --version)",
+      "Bash(py --version)",
+      "Bash(py:*)",
+      "Bash(source venv/Scripts/activate)",
+      "Bash(pip install:*)",
+      "Bash(python -c \"from config import settings; print\\(settings.app_name\\)\")",
+      "Bash(pytest --co -q)",
+      "Bash(python:*)"
+    ]
+  }
+}

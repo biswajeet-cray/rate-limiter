@@ -1,0 +1,17 @@
+# Web framework
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+
+# Settings management
+pydantic-settings==2.8.1
+
+# Redis
+redis==5.3.0
+
+# Testing
+pytest==8.3.5
+pytest-asyncio==0.25.3
+httpx==0.28.1
+
+# Load testing
+locust==2.33.2

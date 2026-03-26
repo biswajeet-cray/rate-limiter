@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.pytest_cache/
+tests/
+locustfile.py
+*.md
+LICENSE
+.github/
+.dockerignore
+Dockerfile
+docker-compose.yml
