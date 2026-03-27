@@ -208,3 +208,7 @@ __marimo__/
 
 # Load test results
 results/
+
+# Claude CLI
+CLAUDE.md
+.claude/

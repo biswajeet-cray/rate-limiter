@@ -28,12 +28,12 @@ graph LR
 
 | Technology | Why |
 |---|---|
-| **Python 3.11** | Concise, async-native, huge ecosystem for web APIs |
+| **Python 3.13** | Concise, async-native, huge ecosystem for web APIs |
 | **FastAPI** | Async by default, auto-generated OpenAPI docs, Pydantic validation |
 | **Redis** | Sub-millisecond reads, atomic operations via Lua, built-in TTL for auto-cleanup |
 | **Docker + Compose** | Reproducible environments, single-command local dev, matches production |
 | **GitHub Actions** | Free CI/CD for public repos, native Docker/ECR integration |
-| **AWS EC2 (t2.micro)** | Free-tier eligible, full control over runtime, runs Docker Compose directly |
+| **AWS EC2 (t3.micro)** | Free-tier eligible, full control over runtime, runs Docker Compose directly |
 | **AWS ECR** | Private container registry in the same region as EC2, no egress costs |
 | **Locust** | Python-native load testing, real-time web UI, scriptable user scenarios |
 
@@ -109,7 +109,7 @@ curl http://localhost:8000/api/v1/health
 
 ```bash
 # Clone and start
-git clone https://github.com/<your-username>/rate-limiter.git
+git clone https://github.com/biswajeet-cray/rate-limiter.git
 cd rate-limiter
 docker compose up -d
 
@@ -183,7 +183,7 @@ now - 60s                    now
 
 ## Load Test Results
 
-Tests run with [Locust](https://locust.io/) against an EC2 t2.micro instance. Traffic mix: 80% check, 15% status, 5% rule listing.
+Tests run with [Locust](https://locust.io/) against an EC2 t3.micro instance. Traffic mix: 80% check, 15% status, 5% rule listing.
 
 <!-- Replace the placeholder numbers below with actual results from run_load_tests.sh -->
 
@@ -206,7 +206,7 @@ bash run_load_tests.sh http://<ec2-ip>:8000
 <!-- Fill in after running load tests. Example findings: -->
 - Token bucket and fixed window checks complete in under X ms at p95 with 100 concurrent users
 - Sliding window is slightly slower due to sorted set operations but still well under X ms
-- The t2.micro instance handles ~X requests/second before CPU becomes the bottleneck
+- The t3.micro instance handles ~X requests/second before CPU becomes the bottleneck
 - Error rate stays at 0% up to 100 users (429s from rate limiting are expected, not errors)
 
 ## Project Structure
@@ -274,7 +274,7 @@ Async request handling pairs well with Redis I/O. Automatic OpenAPI documentatio
 
 ### Why Docker Compose on EC2 (Not ECS/Kubernetes)?
 
-This is a single-service deployment on a free-tier t2.micro. ECS or Kubernetes would add complexity and cost without proportional benefit at this scale. Docker Compose gives us multi-container orchestration, health checks, and restart policies — everything needed for a reliable single-node deployment. The architecture is container-ready, so migrating to ECS or Kubernetes later is a configuration change, not a rewrite.
+This is a single-service deployment on a free-tier t3.micro. ECS or Kubernetes would add complexity and cost without proportional benefit at this scale. Docker Compose gives us multi-container orchestration, health checks, and restart policies — everything needed for a reliable single-node deployment. The architecture is container-ready, so migrating to ECS or Kubernetes later is a configuration change, not a rewrite.
 
 ## What I'd Add With More Time
 
