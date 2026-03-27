@@ -6,7 +6,7 @@
 graph TB
     Client([Client / Postman / Locust])
 
-    subgraph EC2["AWS EC2 t2.micro"]
+    subgraph EC2["AWS EC2 t3.micro"]
         subgraph DC["Docker Compose"]
             subgraph API["FastAPI Container :8000"]
                 Main[main.py<br/>Lifespan Manager]
@@ -194,7 +194,7 @@ graph LR
     end
 
     subgraph Job1["Job: test"]
-        Setup[Setup Python 3.11]
+        Setup[Setup Python 3.13]
         Install[pip install -r requirements.txt]
         Redis2[Redis service container]
         Test[pytest -v]
@@ -229,7 +229,7 @@ graph LR
 **What happens:**
 1. GitHub Actions provisions an Ubuntu runner
 2. Starts a Redis 7 service container (sidecar) with health checks
-3. Sets up Python 3.11 with pip caching
+3. Sets up Python 3.13 with pip caching
 4. Installs all dependencies from `requirements.txt`
 5. Runs `pytest -v` with `RATELIMITER_REDIS_HOST=localhost` so both memory and Redis tests execute
 
