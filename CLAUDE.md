@@ -7,9 +7,9 @@
 - ✅ Step 6: Redis backend + tests
 - ✅ Step 7: Docker + Docker Compose
 - ✅ Step 8: GitHub Actions CI/CD
-- ⬜ Step 9: AWS EC2 deployment
-- ⬜ Step 10: Locust load testing
-- ⬜ Step 11: README + architecture diagram
+- ✅ Step 9: AWS EC2 deployment
+- ✅ Step 10: Locust load testing
+- ✅ Step 11: README + architecture diagram
 
 ## Current Issues
 - None

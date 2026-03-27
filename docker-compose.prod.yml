@@ -1,0 +1,31 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  api:
+    image: ${ECR_IMAGE:-rate-limiter:latest}
+    ports:
+      - "8000:8000"
+    environment:
+      RATELIMITER_STORAGE_BACKEND: redis
+      RATELIMITER_REDIS_HOST: redis
+      RATELIMITER_REDIS_PORT: 6379
+      RATELIMITER_REDIS_DB: 0
+      RATELIMITER_DEBUG: "false"
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  redis-data:
